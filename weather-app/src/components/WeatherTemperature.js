@@ -2,10 +2,10 @@
 import React from 'react';
 
 /* Componente funcional que recibe parámetros para ser usado en un span */
-const WeatherTemperature = (props) => {
+const WeatherTemperature = ({ temp }) => {
     return (
         <div>
-            <span>{props.temp}°</span>
+            <span>{temp}°</span>
         </div>
     );
 }

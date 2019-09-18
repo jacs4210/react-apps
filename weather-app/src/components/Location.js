@@ -5,10 +5,10 @@ import React from 'react';
 
 // Componente funcional.
 // Recibe unas propiedades como atributo y estas son refladas en la vista a la hora de ser renderizada.
-const Location = (props) => {
+const Location = ({ city }) => {
     return (
         <div>
-            <h1>{props.city}</h1>
+            <h1>{city}</h1>
         </div>
     );
 }
