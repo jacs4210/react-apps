@@ -10,7 +10,7 @@ const WeatherData = () => {
     return (
         <div>
             <WeatherTemperature temp={32} />
-            <WeatherExtraInfo extraInfo={"Información Extra"} />
+            <WeatherExtraInfo humidity={80} wind={'30 m/s'} />
         </div>
     );
 }
