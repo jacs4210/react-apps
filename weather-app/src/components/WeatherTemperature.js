@@ -1,14 +1,18 @@
 /* Componente Hijo, no es padre */
 import React from 'react';
 import WeatherIcons from 'react-weathericons';
+import { CLOUD, CLOUDY, SUN, RAIN, WINDY } from '../constants/weathers';
 
 const icons = {
-    sunny: 'day-sunny',
-    rain: 'day-rain'
+    [CLOUD]: 'cloud',
+    [CLOUDY]: 'cloudy',
+    [SUN]: 'day-sunny',
+    [RAIN]: 'day-rain',
+    [WINDY]: 'windy'
 }
 
 const getWeatherIcon = state => {
-    const icon = icons[state] || 'day-sunny';
+    const icon = icons[state] || SUN;
     return <WeatherIcons name={icon} size={'1x'} />
 }
 
