@@ -1,7 +1,7 @@
 /* Componente Hijo, no es padre */
 import React from 'react';
 import WeatherIcons from 'react-weathericons';
-import { CLOUD, CLOUDY, SUN, RAIN, WINDY } from '../constants/weathers';
+import { CLOUD, CLOUDY, SUN, RAIN, WINDY } from '../../../constants/weathers';
 import propTypes from 'prop-types';
 
 const icons = {
@@ -14,7 +14,7 @@ const icons = {
 
 const getWeatherIcon = state => {
     const icon = icons[state] || SUN;
-    return <WeatherIcons name={icon} size={'1x'} />
+    return <WeatherIcons name={icon} size={'2x'} />
 }
 
 /* Componente funcional que recibe parámetros para ser usado en un span */
