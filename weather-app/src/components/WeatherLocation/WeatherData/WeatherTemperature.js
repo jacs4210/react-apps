@@ -3,6 +3,7 @@ import React from 'react';
 import WeatherIcons from 'react-weathericons';
 import { CLOUD, CLOUDY, SUN, RAIN, WINDY } from '../../../constants/weathers';
 import propTypes from 'prop-types';
+import './styles.css';
 
 const icons = {
     [CLOUD]: 'cloud',
@@ -14,15 +15,17 @@ const icons = {
 
 const getWeatherIcon = state => {
     const icon = icons[state] || SUN;
-    return <WeatherIcons name={icon} size={'2x'} />
+    const iconSize = '4x';
+    return <WeatherIcons name={icon} size={iconSize} />
 }
 
 /* Componente funcional que recibe parámetros para ser usado en un span */
 const WeatherTemperature = ({ temp, state }) => {
     return (
-        <div>
-            <div>{getWeatherIcon(state)}</div>
-            <span>{`${temp} C°`}</span>
+        <div className="weatherTemperatureCont">
+            <div className="weatherIconTemperatureCont">{getWeatherIcon(state)}</div>
+            <span className="temperature">{`${temp}`}</span>
+            <span className="temperatureType">{`C°`}</span>
         </div>
     );
 }
