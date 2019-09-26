@@ -16,14 +16,14 @@ const icons = {
 const getWeatherIcon = state => {
     const icon = icons[state] || SUN;
     const iconSize = '4x';
-    return <WeatherIcons name={icon} size={iconSize} />
+    return <WeatherIcons className="weatherIconTemperatureCont" name={icon} size={iconSize} />
 }
 
 /* Componente funcional que recibe parámetros para ser usado en un span */
 const WeatherTemperature = ({ temp, state }) => {
     return (
         <div className="weatherTemperatureCont">
-            <div className="weatherIconTemperatureCont">{getWeatherIcon(state)}</div>
+            {getWeatherIcon(state)}
             <span className="temperature">{`${temp}`}</span>
             <span className="temperatureType">{`C°`}</span>
         </div>
