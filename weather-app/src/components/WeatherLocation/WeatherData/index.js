@@ -1,6 +1,6 @@
 /* Componente Padre de WeatherTemperature y WeatherExtraInfo */
 import React from 'react';
-import { CLOUD, CLOUDY, SUN, RAIN, WINDY } from '../../../constants/weathers';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 /* Componentes Hijos */
@@ -15,6 +15,15 @@ const WeatherData = ({ data: { temp, state, humidity, wind } }) => {
             <WeatherExtraInfo humidity={humidity} wind={wind} />
         </div>
     );
+}
+
+WeatherData.propTypes = {
+    data: PropTypes.shape({
+        temp: PropTypes.number.isRequired,
+        state: PropTypes.string.isRequired,
+        humidity: PropTypes.number.isRequired,
+        wind: PropTypes.number.isRequired
+    })
 }
 
 export default WeatherData;
