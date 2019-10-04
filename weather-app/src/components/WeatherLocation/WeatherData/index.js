@@ -8,11 +8,11 @@ import WeatherTemperature from './WeatherTemperature';
 import WeatherExtraInfo from './WeatherExtraInfo';
 
 /* Componente funcional que no recibe paramatros. Los 2 componentes hijos tienen propiedades a recibir como parámetros de entrada*/
-const WeatherData = () => {
+const WeatherData = ({ data: { temp, state, humidity, wind } }) => {
     return (
         <div className="weatherDataCont">
-            <WeatherTemperature temp={32} state={SUN} />
-            <WeatherExtraInfo humidity={80} wind={30} />
+            <WeatherTemperature temp={temp} state={state} />
+            <WeatherExtraInfo humidity={humidity} wind={wind} />
         </div>
     );
 }
