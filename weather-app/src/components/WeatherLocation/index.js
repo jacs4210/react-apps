@@ -27,15 +27,30 @@ const data = {
 /** Componente de clase sin parámetros. */
 class WeatherLocation extends Component {
 
+    constructor() {
+        super();
+
+        this.state = {
+            city: 'Botogá',
+            data: data
+        }
+    }
+
     handleUpdateComponent = () => {
         console.log('Actualizado');
+
+        this.setState({
+            city: 'Cali'
+        });
     }
 
     // Método que se encarga de renderizar la vista con este componente.
     render() {
+
+        const { city, data } = this.state;
         return (
             <div className="weatherLocationCont">
-                <Location city={"Cali"} />
+                <Location city={city} />
                 <WeatherData data={data} />
                 <button onClick={this.handleUpdateComponent}>Actualizar</button>
             </div>
