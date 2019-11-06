@@ -44,20 +44,39 @@ class WeatherLocation extends Component {
         }
     }
 
+    getWeatherState = () => {
+        return SUN;
+    }
+
+    getData = weather_data => {
+        const { humidity, temp } = weather_data.main;
+        const { speed } = weather_data.wind;
+        const weatherState = this.getWeatherState(weather_data);
+
+        const data = {
+            humidity,
+            temperature: temp,
+            weatherState,
+            wind: `${speed} m/s`
+        }
+
+        return data;
+    }
+
     handleUpdateComponent = () => {
         // let resolve = await fetch(api_wheather);
         fetch(api_wheather).then(resolve => {
             return resolve.json();
         }).then(data => {
-            console.log(data);
+            const newData = this.getData(data);
+            console.log(newData);
+
+            this.setState({
+                city: 'Cali',
+                data: newData
+            });
         }).catch(error => {
             console.log(error);
-        });
-
-        console.log('Actualizado');
-
-        this.setState({
-            city: 'Cali'
         });
     }
 
