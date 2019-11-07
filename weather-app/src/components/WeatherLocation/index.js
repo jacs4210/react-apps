@@ -1,6 +1,7 @@
 /* Componente padre de Location y WeatherData */
 import React, { Component } from 'react';
 import './styles.css';
+import convert from 'convert-units';
 
 /* Componentes hijos */
 import Location from './Location';
@@ -44,6 +45,10 @@ class WeatherLocation extends Component {
         }
     }
 
+    getTemperature = kelvin => {
+        return Number(convert(kelvin).from('K').to('C').toFixed(2));
+    }
+
     getWeatherState = () => {
         return SUN;
     }
@@ -52,10 +57,11 @@ class WeatherLocation extends Component {
         const { humidity, temp } = weather_data.main;
         const { speed } = weather_data.wind;
         const weatherState = this.getWeatherState(weather_data);
+        const temperature = this.getTemperature(temp);
 
         const data = {
             humidity,
-            temperature: temp,
+            temperature,
             weatherState,
             wind: `${speed} m/s`
         }
