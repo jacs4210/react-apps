@@ -1,20 +1,13 @@
 /* Componente padre de Location y WeatherData */
 import React, { Component } from 'react';
 import './styles.css';
-import convert from 'convert-units';
+import transformWeather from '../../services/transformWeather';
+import { api_wheather } from '../../constants/api_url';
 
 /* Componentes hijos */
 import Location from './Location';
 import WeatherData from './WeatherData';
 import { SUN } from '../../constants/weathers';
-
-/* Información para el consumo del api restful del clima */
-const location = 'Bogotá,co';
-const api_key = 'faf012e567446e635936610c74f5d5b0';
-const url_base_weather = 'http://api.openweathermap.org/data/2.5/wheater';
-
-// Url final que será utilizada para obtener la información del clima.
-const api_wheather = `${url_base_weather}?q=${location}&appid=${api_key}`;
 
 const data = {
     temp: 32,
@@ -45,36 +38,12 @@ class WeatherLocation extends Component {
         }
     }
 
-    getTemperature = kelvin => {
-        return Number(convert(kelvin).from('K').to('C').toFixed(2));
-    }
-
-    getWeatherState = () => {
-        return SUN;
-    }
-
-    getData = weather_data => {
-        const { humidity, temp } = weather_data.main;
-        const { speed } = weather_data.wind;
-        const weatherState = this.getWeatherState(weather_data);
-        const temperature = this.getTemperature(temp);
-
-        const data = {
-            humidity,
-            temperature,
-            weatherState,
-            wind: `${speed} m/s`
-        }
-
-        return data;
-    }
-
     handleUpdateComponent = () => {
         // let resolve = await fetch(api_wheather);
         fetch(api_wheather).then(resolve => {
             return resolve.json();
         }).then(data => {
-            const newData = this.getData(data);
+            const newData = transformWeather(data);
             console.log(newData);
 
             this.setState({
