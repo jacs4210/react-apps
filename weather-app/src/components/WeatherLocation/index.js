@@ -1,20 +1,13 @@
 /* Componente padre de Location y WeatherData */
 import React, { Component } from 'react';
 import './styles.css';
+import { CircularProgress } from '@material-ui/core';
 import transformWeather from '../../services/transformWeather';
 import { api_wheather } from '../../constants/api_url';
 
 /* Componentes hijos */
 import Location from './Location';
 import WeatherData from './WeatherData';
-import { SUN } from '../../constants/weathers';
-
-const data = {
-    temp: 32,
-    state: SUN,
-    humidity: 80,
-    wind: 30
-}
 
 /* Componente funcional sin parámetros. El componente hijo Location recibe como parámetro el atributo city */
 /* const WeatherLocation = () => {
@@ -34,8 +27,12 @@ class WeatherLocation extends Component {
 
         this.state = {
             city: 'Botogá',
-            data: data
+            data: null
         }
+    }
+
+    componentDidMount() {
+        this.handleUpdateComponent();
     }
 
     handleUpdateComponent = () => {
@@ -62,8 +59,7 @@ class WeatherLocation extends Component {
         return (
             <div className="weatherLocationCont">
                 <Location city={city} />
-                <WeatherData data={data} />
-                <button onClick={this.handleUpdateComponent}>Actualizar</button>
+                {data ? <WeatherData data={data} /> : <CircularProgress />}
             </div>
         );
     }
