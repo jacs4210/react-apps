@@ -26,7 +26,7 @@ class WeatherLocation extends Component {
     constructor(props) {
         super(props);
 
-        const { city } = props;
+        let { city } = props;
 
         this.state = {
             city,
@@ -45,7 +45,7 @@ class WeatherLocation extends Component {
         fetch(api_wheather).then(resolve => {
             return resolve.json();
         }).then(data => {
-            const newData = transformWeather(data);
+            let newData = transformWeather(data);
             console.log(newData);
 
             this.setState({
@@ -59,7 +59,8 @@ class WeatherLocation extends Component {
     // Método que se encarga de renderizar la vista con este componente.
     render() {
 
-        const { city, data } = this.state;
+        let { city, data } = this.state;
+        
         return (
             <div className="weatherLocationCont">
                 <Location city={city} />
