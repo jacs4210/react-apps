@@ -11,7 +11,7 @@ import './App.css';
 const App = () => {
     return (
         <div className="App">
-            <WeatherLocation />
+            <WeatherLocation city="Bogotá" />
         </div>
     );
 }
