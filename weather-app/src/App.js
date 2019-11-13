@@ -2,7 +2,7 @@
 import React from 'react';
 
 /* Componente Hijo */
-import WeatherLocation from './components/WeatherLocation';
+import LocationList from './components/LocationList';
 
 /* Estilos a usar en la aplicación */
 import './App.css';
@@ -11,7 +11,7 @@ import './App.css';
 const App = () => {
     return (
         <div className="App">
-            <WeatherLocation city="Bogotá" />
+            <LocationList/>
         </div>
     );
 }
