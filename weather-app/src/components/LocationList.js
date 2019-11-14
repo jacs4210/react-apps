@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import WeatherLocation from './WeatherLocation/index';
 
 const LocationList = ({ cities }) => {
@@ -10,6 +11,10 @@ const LocationList = ({ cities }) => {
             <WeatherLocation city="Rio de janeiro,bra" />
         </div>
     );
+}
+
+LocationList.propTypes = {
+    cities: PropTypes.array.isRequired
 }
 
 export default LocationList;
