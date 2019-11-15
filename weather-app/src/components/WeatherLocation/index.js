@@ -56,10 +56,6 @@ class WeatherLocation extends Component {
         });
     }
 
-    onWeatherLocationClick = () => {
-
-    }
-
     // Método que se encarga de renderizar la vista con este componente.
     render() {
 

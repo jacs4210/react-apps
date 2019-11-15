@@ -18,6 +18,7 @@ class App extends Component {
     handledSelectionLocation = city => {
         console.log(`handledSelectionLocation ${city}`);
     }
+
     render() {
         return (
             <div className="App">
