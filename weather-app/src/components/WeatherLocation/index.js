@@ -56,13 +56,18 @@ class WeatherLocation extends Component {
         });
     }
 
+    onWeatherLocationClick = () => {
+
+    }
+
     // Método que se encarga de renderizar la vista con este componente.
     render() {
 
         let { city, data } = this.state;
-        
+        let { onWeatherLocationClick } = this.props;
+
         return (
-            <div className="weatherLocationCont">
+            <div className="weatherLocationCont" onClick={onWeatherLocationClick}>
                 <Location city={city} />
                 {data ? <WeatherData data={data} /> : <CircularProgress />}
             </div>
@@ -71,7 +76,8 @@ class WeatherLocation extends Component {
 }
 
 WeatherLocation.propTypes = {
-    city: PropTypes.string.isRequired
+    city: PropTypes.string.isRequired,
+    onWeatherLocationClick: PropTypes.func
 }
 
 export default WeatherLocation;

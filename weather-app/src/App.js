@@ -15,10 +15,13 @@ const cities = [
 
 /* Componente funcional de la aplicación */
 class App extends Component {
+    handledSelectionLocation = city => {
+        console.log(`handledSelectionLocation ${city}`);
+    }
     render() {
         return (
             <div className="App">
-                <LocationList cities={cities} />
+                <LocationList cities={cities} onSelectedLocation={this.handledSelectionLocation} />
             </div>
         );
     }
