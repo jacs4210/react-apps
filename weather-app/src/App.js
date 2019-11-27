@@ -7,6 +7,9 @@ import LocationList from './components/LocationList';
 /* Estilos a usar en la aplicación */
 import './App.css';
 
+/* Componentes de diseño que provee React-Flexbox */
+import { Grid, Col, Row } from 'react-flexbox-grid';
+
 const cities = [
     'Bogota,col',
     'Buenos aires,ar',
@@ -21,9 +24,19 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                <LocationList cities={cities} onSelectedLocation={this.handledSelectionLocation} />
-            </div>
+            <Grid>
+                <Row>
+                    Titulo
+                </Row>
+                <Row>
+                    <Col xs={12} md={6}>
+                        <LocationList cities={cities} onSelectedLocation={this.handledSelectionLocation} />
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <div className="details"></div>
+                    </Col>
+                </Row>
+            </Grid>            
         );
     }
 }
